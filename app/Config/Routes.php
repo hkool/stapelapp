@@ -32,7 +32,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/dobbelsteen', 'SpelerController::index');
-
+$routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
+$routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
