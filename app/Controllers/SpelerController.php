@@ -22,7 +22,6 @@ class SpelerController extends BaseController
       ['aantal'=>'required']))
       {
         return view(['title'=>'Geef het aantal spelers op.'],'speler/create.php');
-     
       } 
       $aantal = $post['aantal'];
       if($aantal>6){$aantal = 6;}
