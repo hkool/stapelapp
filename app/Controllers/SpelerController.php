@@ -5,10 +5,7 @@ use App\Models\Speler;
 
 class SpelerController extends BaseController
 {
-    public function index()
-    {
-        return view('dobbelsteen');
-    }
+    
 
     public function setAantalSpelers()
     {

@@ -31,7 +31,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/dobbelsteen', 'SpelerController::index');
+$routes->get('/dobbelsteen', 'DiceController::show');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
 /*
