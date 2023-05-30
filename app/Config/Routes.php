@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
@@ -32,6 +33,9 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/vragen', 'VragenController::getVragen');
+$routes->get('/dobbelsteen', 'SpelerController::index');
+$routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
+$routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
