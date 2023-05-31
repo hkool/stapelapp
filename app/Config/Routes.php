@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
@@ -30,7 +31,12 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-
+$routes->get('/dobbelsteen', 'DiceController::show');
+$routes->get('/dobbelsteen', 'SpelerController::index');
+$routes->get('/vragen', 'VragenController::getVragen');
+$routes->get('/move', 'MoveController::moveSpelers');
+$routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
+$routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
