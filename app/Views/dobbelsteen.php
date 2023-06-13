@@ -51,12 +51,34 @@ include 'dobbelsteen.css';
       </li>
     </ol>
 </div>
+<p>The random number is: <?php echo $getal; ?></p>
+
 <button type="button" id="roll-button">Roll Dice</button>
 </div>
 
 <script>
-  <?php
-  include 'dobbelsteen.js'; 
-  ?>
+var dice = {
+  sides: 6,
+  roll: function () {
+    //random nummer moet uit php komen.
+    var randomNumber = <?= $getal ?>;
+    return randomNumber;
+    console.log(randomNumber)
+  }
+};
+
+var button = document.getElementById('roll-button');
+button.onclick = function() {
+  var die = document.getElementById('die-1');
+  die.classList.remove('odd-roll');
+  void die.offsetWidth;
+  die.classList.add('odd-roll');
+  var result = dice.roll();
+  die.dataset.roll = result;
+  console.log(result)
+};
 </script>
+
+
+</body>
 </html>
