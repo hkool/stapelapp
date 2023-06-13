@@ -5,7 +5,10 @@ use App\Models\Bord;
 
 class BordController extends BaseController
 {
-    public function index()
+    public function startGame()
+    {
+    }
+    public function showBord()
     {
         return view('bord');
     }

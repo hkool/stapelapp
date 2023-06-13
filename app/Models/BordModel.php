@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Bord extends Model
+class BordModel extends Model
 {
     
 }
