@@ -34,6 +34,10 @@ $routes->get('/', 'Home::index');
 $routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
+$routes->get(
+    '/score/(:num)',
+    'PizzaPuntController::getRemainingPizzaPoints/$1'
+);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
