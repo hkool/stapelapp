@@ -34,6 +34,11 @@ $routes->get('/', 'Home::index');
 $routes->get('/dobbelsteen', 'DiceController::show');
 $routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/vragen', 'VragenController::getVragen');
+$routes->post('/vragen', 'VragenController::submitAnswer');
+$routes->post('/reset', 'VragenController::resetGebruikt');
+$routes->get('/vragen/(:num)', 'VragenController::getVragen/$1');
+
+$routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/move', 'MoveController::moveSpelers');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
