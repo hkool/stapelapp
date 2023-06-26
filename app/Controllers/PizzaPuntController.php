@@ -11,7 +11,7 @@ class PizzaPuntController extends BaseController
   {
     // Creates new instance of PizzaPoints()
     $pizzaModel = new PizzaPoints();
-    // Grabs the user ID from the database ( had to change structure since there was no PK and AI (needs to be changed in the Production Database))
+    // Grabs the user ID from the database ( had to change the table since there was no PK and AI (needs to be changed in the Production Database))
     $score = $pizzaModel->returnScore($speler_id);
     echo '<pre>';
     print_r($score);
