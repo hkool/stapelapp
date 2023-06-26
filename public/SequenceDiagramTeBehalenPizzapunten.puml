@@ -1,0 +1,24 @@
+@startuml Diagram Pizzapunten
+actor User
+participant PizzaPuntController
+participant PizzaPointsModel
+
+User -> PizzaPuntController: getRemainingPizzaPoints()
+activate PizzaPuntController
+
+PizzaPuntController -> PizzaPointsModel: returnScore($speler_id)
+activate PizzaPointsModel
+
+PizzaPointsModel --> PizzaPuntController: Return remaining pizza points
+deactivate PizzaPointsModel
+
+PizzaPuntController ->  User: Generate view with pizza points
+
+
+@enduml
+
+"Opmerkingen:
+- Gebruiker bekijkt de pizzapunten: Dit is de actie van de gebruiker om de pizzapunten te bekijken.
+- PizzaPuntController wordt geactiveerd: De PizzaPuntController wordt geactiveerd om de actie van de gebruiker te verwerken.
+- PizzaPuntController vraagt de PizzaPointsModel om de resterende pizzapunten op te halen: De PizzaPuntController communiceert met de PizzaPointsModel om de resterende pizzapunten op te halen.
+- PizzaPointsModel stuurt de resterende pizzapunten terug naar de PizzaPuntController: De PizzaPointsModel geeft de resterende pizzapunten terug aan de GameController.
