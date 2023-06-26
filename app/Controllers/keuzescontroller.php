@@ -6,12 +6,16 @@ use CodeIgniter\Controller;
 
 class KeuzesController extends Controller
 {
+    // Voeg de helpers en filters toe aan de controllerklasse
+    public $helpers = ['form', 'url'];
+    public $filters = ['CSRF' => ['before' => ['create', 'edit']]];
+
     public function index()
     {
         // Laad de session helper
         helper('session');
 
-        $data['kanten'] = array('links', 'rechts', 'beneden');
+        $data['kanten'] = ['links', 'rechts', 'beneden'];
 
         $session = session();
 
@@ -29,8 +33,21 @@ class KeuzesController extends Controller
         if (!empty($gekozenKanten)) {
             $data['gekozenKanten'] = $gekozenKanten;
         }
-        
 
         return view('keuzesView', $data);
+    }
+
+    public function reset()
+    {
+        // Laad de session helper
+        helper('session');
+
+        $session = session();
+
+        // Verwijder de opgeslagen kanten uit de sessie
+        $session->remove('gekozen_kanten');
+
+        // Redirect terug naar dezelfde pagina
+        return redirect()->to('/keuzescontroller/index');
     }
 }
