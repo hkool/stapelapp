@@ -1,21 +1,32 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\Bord;
+use App\Models\BordModel;
 
 class BordController extends BaseController
 {
+    private $bordModel;
+    function __construct(){
+      $this->bordModel = new BordModel();
+    }
+    
+
     public function index()
     {
-        return view('bord');
+        $data['coords'] = $this->bordModel->getAllCoords();
+
+        return view('bord', $data);
     }
+
+
+    
     public function startGame()
     {
     
     }
     public function showBord()
     {
-        return view('bord');
+
     }
     public function huidigeSpeler()
     {

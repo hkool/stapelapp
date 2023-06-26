@@ -38,6 +38,7 @@ $routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/vragen', 'VragenController::getVragen');
 $routes->get('/dobbelsteen', 'SpelerController::index');
 $routes->get('/bord', 'BordController::index');
+$routes->get('/bord', 'bordController::bord');
 $routes->get('/move', 'MoveController::moveSpelers');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
