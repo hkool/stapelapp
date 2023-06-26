@@ -33,7 +33,6 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/dobbelsteen', 'DiceController::show');
 $routes->get('/dobbelsteen', 'SpelerController::index');
-$routes->get('/vraag', 'VraagController::index');
 $routes->get('/vragen', 'VragenController::getVragen');
 $routes->get('/move', 'MoveController::moveSpelers');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');

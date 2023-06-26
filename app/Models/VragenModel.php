@@ -22,5 +22,5 @@ class VragenModel extends Model
 }
 
 
-    
+
 }
