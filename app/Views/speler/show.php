@@ -7,10 +7,10 @@
     <title>Spelers</title>
 </head>
 <body>
-    <?php foreach($spelers as $speler)
-    {
-        $kleur = $speler['kleur'];
-        echo "Speler met kleur: $kleur\n";
-    }?>
+    <?php foreach ($spelers as $speler) { // voor elke speler in de array spelers vanuit de controller
+        $kleur = $speler['kleur']; // de kleur van de speler pakken gebaseerd op de index van de for loop
+        $naam = $speler['naam']; // de naam pakken van de speler van de corresponderende input
+        echo "Speler $naam is de kleur $kleur<br>";
+    } ?>
 </body>
 </html>
