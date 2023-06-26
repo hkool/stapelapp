@@ -5,10 +5,7 @@ use App\Models\Speler;
 
 class SpelerController extends BaseController
 {
-    public function index()
-    {
-        return view('dobbelsteen');
-    }
+    
 
     public function setAantalSpelers()
     {
@@ -22,7 +19,6 @@ class SpelerController extends BaseController
       ['aantal'=>'required']))
       {
         return view(['title'=>'Geef het aantal spelers op.'],'speler/create.php');
-     
       } 
       $aantal = $post['aantal'];
       if($aantal>6){$aantal = 6;}
