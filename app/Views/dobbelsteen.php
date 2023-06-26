@@ -237,13 +237,15 @@ button:hover {
       </li>
     </ol>
 </div>
+<p>The random number is: <?php echo $getal; ?></p>
+
 <button type="button" id="roll-button">Roll Dice</button>
 <script>
 var dice = {
   sides: 6,
   roll: function () {
     //random nummer moet uit php komen.
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    var randomNumber = <?= $getal ?>;
     return randomNumber;
     console.log(randomNumber)
   }
@@ -259,8 +261,8 @@ button.onclick = function() {
   die.dataset.roll = result;
   console.log(result)
 };
-
 </script>
+
 
 </body>
 </html>
