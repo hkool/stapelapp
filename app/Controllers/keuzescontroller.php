@@ -3,29 +3,23 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\VragenModel;
 
 class KeuzesController extends Controller
 {
-    // Voeg de helpers en filters toe aan de controllerklasse
     public $helpers = ['form', 'url'];
     public $filters = ['CSRF' => ['before' => ['create', 'edit']]];
 
     public function index()
     {
-        // Laad de session helper
         helper('session');
-
         $data['kanten'] = ['links', 'rechts', 'beneden'];
-
         $session = session();
 
         if ($this->request->getMethod() === 'post' && $this->request->getPost('kant')) {
             $kant = $this->request->getPost('kant');
-
-            // Haal de eerder opgeslagen kanten op uit de sessie en voeg de nieuwe kant toe
             $gekozenKanten = $session->get('gekozen_kanten', []);
             $gekozenKanten[] = $kant;
-
             $session->set('gekozen_kanten', $gekozenKanten);
         }
 
@@ -34,20 +28,44 @@ class KeuzesController extends Controller
             $data['gekozenKanten'] = $gekozenKanten;
         }
 
+        $vragenModel = new VragenModel();
+        $vragen = $vragenModel->getUnusedVragen();
+
+        if (!empty($vragen)) {
+            $data['vragen'] = $vragen;
+        }
+
         return view('keuzesView', $data);
     }
 
     public function reset()
     {
-        // Laad de session helper
         helper('session');
-
         $session = session();
-
-        // Verwijder de opgeslagen kanten uit de sessie
         $session->remove('gekozen_kanten');
-
-        // Redirect terug naar dezelfde pagina
         return redirect()->to('/keuzescontroller/index');
+    }
+
+    public function getVragen()
+    {
+        $vragenModel = new VragenModel();
+        $vragen = $vragenModel->getUnusedVragen();
+        $data['vragen'] = $vragen;
+        return view('vragen', $data);
+    }
+
+    public function submitAnswer()
+    {
+        $vraagId = $this->request->getVar('vraag_id');
+        $vragenModel = new VragenModel();
+        $vragenModel->markVraagAsUsed($vraagId);
+        return redirect()->to('/vragen');
+    }
+
+    public function resetGebruikt()
+    {
+        $vragenModel = new VragenModel();
+        $vragenModel->resetGebruiktField();
+        return redirect()->to('/vragen');
     }
 }
