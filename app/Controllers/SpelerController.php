@@ -30,7 +30,7 @@ class SpelerController extends BaseController
       {
         $speler=model('Speler');
         $speler->save([
-            'kleur'=>$kleuren[$i+1],
+            'kleur'=>$kleuren[$i],
             'beurt'=>0,
             'naam'=>'anoniem',
             'board_id'=>42
@@ -40,5 +40,18 @@ class SpelerController extends BaseController
       
       $spelers = $spelerModel->findAll();
       return view('speler/show',['spelers'=>$spelers]);
+    }
+
+    public function setKleur() {
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['kleur'])) {
+            $selectedKleur = $_POST['kleur'];
+            
+            $playerId = $_POST['id'];
+
+            $db = \Config\Database::connect();
+            $db->query("UPDATE spelers SET kleur = '{$selectedKleur}' WHERE id = {$playerId}");
+        }
+      }
     }
 }
