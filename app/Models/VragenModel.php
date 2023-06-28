@@ -14,7 +14,7 @@ class VragenModel extends Model
     public function getUnusedVragen()
     {
         $builder = $this->db->table($this->table);
-        $builder->select('vraag_id, vraagtekst');
+        $builder->select('vraag_id, vraagtekst, antwoord');
         $builder->where('gebruikt', 0); // filter de gebruikte vragen eruit (0)
         $query = $builder->get();
         $result = $query->getResultArray();
