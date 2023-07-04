@@ -7,10 +7,30 @@
     <title>Spelers</title>
 </head>
 <body>
-    <?php foreach($spelers as $speler)
-    {
-        $kleur = $speler['kleur'];
-        echo "Speler met kleur: $kleur\n";
-    }?>
+
+<?php
+    $image_urls = array();
+
+    $base_url = base_url();
+    
+    foreach ($spelers as $speler) {
+        $kleurimg = $speler['kleur'];
+        $image_url = $base_url . "/" . $kleurimg . ".png";
+        $image_urls[] = $image_url;
+    }
+    
+    foreach ($image_urls as $url) {
+        echo '<form method="POST" action="/speler/aantal/kleur">';
+        echo '<label>';
+        echo '<input type="radio" name="kleur" value="' . $kleurimg . '">';
+        echo '<img src="' . $url . '" alt="not found" style="width:7%;heigth:7%;">';
+        echo '<input type="hidden" value="' . $speler['id']. '">';
+        echo '</label>';
+    }
+        echo '<button type="submit">Selecteer kleur</button>';
+        echo '</form>';
+    
+?>
+
 </body>
 </html>

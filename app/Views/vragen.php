@@ -10,23 +10,29 @@
     </style>
 </head>
 <body>
-        <!-- random vraag -->
-        <?php $randomVraag = array_rand($vragen); ?>
-        <div class="vraag">
-            <?php echo $vragen[$randomVraag]['vraagtekst']; ?>
-        </div>
-
+    <!-- random vraag -->
+    <?php $randomVraag = array_rand($vragen); ?>
+    <div class="vraag">
+        <?php echo $vragen[$randomVraag]['vraagtekst']; ?>
+    </div>
 
     <form action="" method="post">
+        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+        <input type="hidden" name="vraag_id" value="<?php echo $vragen[$randomVraag]['vraag_id']; ?>">
         <input type="text" name="answer" placeholder="Antwoord" required>
         <button type="submit">Beantwoord</button>
+    </form> <br>
+
+    <!-- reset vragen -->
+    <form action="/reset" method="post">
+        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+        <button type="submit">Reset Vragen</button>
     </form>
-        <!-- alle vragen -->
-    <h2>Vragen</h2>
-    <ul>
-        <?php foreach ($vragen as $vraag): ?>
-            <li><?php echo $vraag['vraagtekst']; ?></li>
-        <?php endforeach; ?>
-    </ul>
+
+    <!-- Display all antwoorden -->
+    <!-- <h2>All Antwoorden:</h2>
+    <?php foreach ($vragen as $vraag): ?>
+        <p><?php echo $vraag['antwoord']; ?></p>
+    <?php endforeach; ?> -->
 </body>
 </html>
