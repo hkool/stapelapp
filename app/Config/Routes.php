@@ -55,6 +55,9 @@ $routes->post('/keuzescontroller/reset', 'KeuzesController::reset');
 $routes->get('/vragen', 'KeuzesController::getVragen'); // gewijzigd naar 'getVragen'
 $routes->post('/vragen/submit', 'KeuzesController::submitAnswer');
 $routes->post('/vragen/reset', 'KeuzesController::reset');
+$routes->get('/nieuwe_kant', 'KeuzesController::nieuwe_kant');
+
+
 
 
 $routes->get('game', 'GameController::index');
