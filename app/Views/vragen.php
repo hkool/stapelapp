@@ -11,14 +11,15 @@
 </head>
 <body>
     <!-- random vraag -->
-    <?php $randomVraag = array_rand($vragen); ?>
     <div class="vraag">
-        <?php echo $vragen[$randomVraag]['vraagtekst']; ?>
+        <!-- vraagtekst weergeven -->
+        <?php echo $huidigeVraag->vraagtekst; ?>
     </div>
-
+        <!-- antwoord formulier -->
     <form action="" method="post">
         <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-        <input type="hidden" name="vraag_id" value="<?php echo $vragen[$randomVraag]['vraag_id']; ?>">
+        <!-- hidden input met de vraag id -->
+        <input type="hidden" name="vraag_id" value="<?php echo $huidigeVraag->vraagId; ?>">
         <input type="text" name="answer" placeholder="Antwoord" required>
         <button type="submit">Beantwoord</button>
     </form> <br>
@@ -29,10 +30,5 @@
         <button type="submit">Reset Vragen</button>
     </form>
 
-    <!-- Display all antwoorden -->
-    <!-- <h2>All Antwoorden:</h2>
-    <?php foreach ($vragen as $vraag): ?>
-        <p><?php echo $vraag['antwoord']; ?></p>
-    <?php endforeach; ?> -->
 </body>
 </html>

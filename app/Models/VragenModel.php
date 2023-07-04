@@ -10,16 +10,27 @@ class VragenModel extends Model
     protected $primaryKey = 'vraag_id';
     protected $allowedFields = ['vraagtekst', 'antwoord', 'categorie_id', 'gebruikt'];
 
-    // vragen ophalen uit de db
+    // vragen ophalen uit de db en teruggeven als Vraag objecten
     public function getUnusedVragen()
     {
+        // instantie van de Query Builder class
         $builder = $this->db->table($this->table);
         $builder->select('vraag_id, vraagtekst, antwoord');
         $builder->where('gebruikt', 0); // filter de gebruikte vragen eruit (0)
         $query = $builder->get();
-        $result = $query->getResultArray();
+        $result = $query->getResult();
+        // het result object omzetten naar een array van Vraag objecten
+        $vragen = [];
+        foreach ($result as $row) {
+            $vraag = new Vraag(); 
+            // de velden van de Vraag objecten vullen van de db resultaten
+            $vraag->vraagId = $row->vraag_id; 
+            $vraag->vraagtekst = $row->vraagtekst;
+            $vraag->antwoord = $row->antwoord;
+            $vragen[] = $vraag;
+        }
 
-        return $result;
+        return $vragen;
     }
 
     public function markVraagAsUsed($vraagId)
@@ -47,4 +58,11 @@ class VragenModel extends Model
 
         return $result;
     }
+}
+// define van een Vraag object
+class Vraag
+{
+    public $vraagId;
+    public $vraagtekst;
+    public $antwoord;
 }
