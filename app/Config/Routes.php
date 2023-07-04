@@ -37,6 +37,25 @@ $routes->get('/vragen', 'VragenController::getVragen');
 $routes->get('/move', 'MoveController::moveSpelers');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
+
+$routes->get('/kant', 'KeuzesController::index');
+$routes->post('/keuzescontroller/index', 'KeuzesController::index');
+$routes->get('/keuzescontroller/index', 'KeuzesController::index');
+$routes->post('/keuzescontroller/reset', 'KeuzesController::reset');
+$routes->get('/vragen', 'KeuzesController::getVragen'); // gewijzigd naar 'getVragen'
+$routes->post('/vragen/submit', 'KeuzesController::submitAnswer');
+$routes->post('/vragen/reset', 'KeuzesController::reset');
+$routes->get('/nieuwe_kant', 'KeuzesController::nieuwe_kant');
+
+
+
+
+$routes->get('game', 'GameController::index');
+$routes->post('game/setAantalSpelers', 'GameController::setAantalSpelers');
+$routes->get('game/keuze', 'GameController::keuze');
+$routes->post('game/reset', 'GameController::reset');
+
+
 $routes->post('/speler/aantal/kleur', 'SpelerController::setKleur');
 /*
  * --------------------------------------------------------------------
