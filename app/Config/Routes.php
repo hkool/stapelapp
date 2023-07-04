@@ -37,10 +37,14 @@ $routes->get('/vragen', 'VragenController::getVragen');
 $routes->get('/move', 'MoveController::moveSpelers');
 $routes->get('/speler/aantal', 'SpelerController::setAantalSpelers');
 $routes->post('/speler/aantal', 'SpelerController::setAantalSpelers');
+$routes->post('/speler/aantal/kleur', 'SpelerController::setKleur');
 $routes->get(
     '/score/(:num)',
-    'PizzaPuntController::getRemainingPizzaPoints/$1'
+    'PizzaPuntController::index/$1'
 );
+$routes->get('/score/categories/(:num)', 'PizzaPuntController::categories/$1');
+$routes->get('/scores', 'PizzaPuntController::all');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
