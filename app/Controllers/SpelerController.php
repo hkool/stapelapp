@@ -42,16 +42,17 @@ class SpelerController extends BaseController
       return view('speler/show',['spelers'=>$spelers]);
     }
 
-    public function setKleur() {
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['kleur'])) {
-            $selectedKleur = $_POST['kleur'];
+    // public function setKleur() {
+    //   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //     if (isset($_POST['kleur'])) {
+    //         $selectedKleur = $_POST['kleur'];
             
-            $playerId = $_POST['id'];
+    //         $playerId = $_POST['id'];
 
-            $db = \Config\Database::connect();
-            $db->query("UPDATE spelers SET kleur = '{$selectedKleur}' WHERE id = {$playerId}");
-        }
-      }
-    }
+    //         $db = \Config\Database::connect();
+    //         $db->query("UPDATE spelers SET kleur = '{$selectedKleur}' WHERE id = {$playerId}");
+    //     }
+    //   }
+    //   return view('bord');
+    // }
 }
